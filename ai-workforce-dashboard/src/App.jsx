@@ -34,10 +34,14 @@
 
 // export default App
 
-import Dashboard from './components/Dashboard'
+import Dashboard from "./components/Dashboard";
 
 function App() {
-  return <Dashboard />
+  return (
+    <div className="flex w-[99vw]">
+      <Dashboard />
+    </div>
+  );
 }
 
-export default App
+export default App;
