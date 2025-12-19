@@ -34,14 +34,41 @@
 
 // export default App
 
+import { useState } from "react";
 import Dashboard from "./components/Dashboard";
+import SalesAgent from "./pages/SalesAgent";
 
+// // Simple routing without react-router for now
 function App() {
-  return (
-    <div className="flex w-[99vw]">
-      <Dashboard />
-    </div>
-  );
+  const [currentPage, setCurrentPage] = useState("dashboard");
+
+  // You can replace this with React Router later
+  const renderPage = () => {
+    switch (currentPage) {
+      case "sales":
+        return <SalesAgent />;
+      case "dashboard":
+      default:
+        return <Dashboard onNavigate={setCurrentPage} />;
+    }
+  };
+
+  return renderPage();
 }
 
 export default App;
+
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import Dashboard from './components/Dashboard';
+// import SalesAgent from './pages/SalesAgent';
+
+// export default function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Dashboard />} />
+//         <Route path="/sales" element={<SalesAgent />} />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
