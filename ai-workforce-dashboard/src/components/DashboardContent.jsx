@@ -117,7 +117,7 @@ const MeetingCard = ({ meeting }) => (
       )}
       <p className="text-sm text-gray-400 mt-1">{meeting.time}</p>
     </div>
-    <button className="text-blue-600 font-medium text-sm hover:border-2 border-blue-500 py-2 px-4 rounded-full whitespace-nowrap ml-4">
+    <button className="text-blue-600 font-medium text-sm border border-transparent hover:border-blue-500 py-2 px-4 rounded-full whitespace-nowrap ml-4 transition-all duration-200">
       {meeting.actionType === "join" ? "Join Meeting" : "Notify Me"}
     </button>
   </div>
@@ -126,8 +126,9 @@ const MeetingCard = ({ meeting }) => (
 export default function DashboardContent() {
   return (
     <div
-    className="px-8 py-6 h-screen flex flex-col overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed"
-      style={{ backgroundImage: `url(${backgroundImage})` }}>
+      className="px-8 py-6 h-full overflow-auto bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
         Hello {userData.name}, below are your insights
       </h1>
@@ -151,7 +152,7 @@ export default function DashboardContent() {
               far!
             </p>
           </div>
-          <button className="text-blue-600 font-medium text-sm hover:border-2 border-blue-500 py-2 px-4 rounded-full">
+          <button className="text-blue-600 font-medium text-sm border border-transparent hover:border-blue-500 py-2 px-4 rounded-full transition-all duration-200">
             Get More Credits
           </button>
         </div>
@@ -163,7 +164,7 @@ export default function DashboardContent() {
       </div>
 
       {/* Meetings Today */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 mb-8">
+      <div className="bg-white backdrop-blur-sm rounded-3xl p-6 mb-8">
         <div className="flex gap-8">
           <div className="w-1/3">
             <h2 className="text-2xl font-semibold text-gray-800">
@@ -182,7 +183,7 @@ export default function DashboardContent() {
       </div>
 
       {/* Meetings This Week */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6">
+      <div className="bg-white backdrop-blur-sm rounded-3xl p-6 mb-4">
         <div className="flex gap-8">
           <div className="w-1/3">
             <h2 className="text-2xl font-semibold text-gray-800">
