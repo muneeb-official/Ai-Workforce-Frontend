@@ -10,19 +10,40 @@ import {
 // Icon Components for Stats
 const icons = {
   envelope: () => (
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    >
       <rect x="2" y="4" width="20" height="16" rx="2" />
       <path d="M22 7l-10 6L2 7" />
     </svg>
   ),
   inbox: () => (
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    >
       <rect x="2" y="4" width="20" height="16" rx="2" />
       <path d="M2 14h6l2 2h4l2-2h6" />
     </svg>
   ),
   percent: () => (
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    >
       <rect x="3" y="3" width="18" height="18" rx="2" />
       <circle cx="9" cy="9" r="1.5" fill="currentColor" />
       <circle cx="15" cy="15" r="1.5" fill="currentColor" />
@@ -30,12 +51,26 @@ const icons = {
     </svg>
   ),
   phone: () => (
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    >
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
   ),
   duration: () => (
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    >
       <circle cx="12" cy="12" r="10" />
       <path d="M12 6v6l4 2" />
     </svg>
@@ -81,7 +116,7 @@ const MeetingCard = ({ meeting }) => (
       )}
       <p className="text-sm text-gray-400 mt-1">{meeting.time}</p>
     </div>
-    <button className="text-blue-600 font-medium text-sm hover:underline whitespace-nowrap ml-4">
+    <button className="text-blue-600 font-medium text-sm hover:border-2 border-blue-500 py-2 px-4 rounded-full whitespace-nowrap ml-4">
       {meeting.actionType === "join" ? "Join Meeting" : "Notify Me"}
     </button>
   </div>
@@ -109,10 +144,11 @@ export default function DashboardContent() {
               Your Credits Usage summary, So far!
             </h2>
             <p className="text-sm text-gray-600 font-medium mt-1">
-              You have used {userData.creditsUsedPercentage}% of Credits, so far!
+              You have used {userData.creditsUsedPercentage}% of Credits, so
+              far!
             </p>
           </div>
-          <button className="text-blue-600 font-medium text-sm hover:underline">
+          <button className="text-blue-600 font-medium text-sm hover:border-2 border-blue-500 py-2 px-4 rounded-full">
             Get More Credits
           </button>
         </div>
