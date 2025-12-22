@@ -53,7 +53,7 @@ export default function SalesAgentContent() {
                 <div className="flex-1 flex items-center justify-center p-8">
                     <div className="text-center max-w-xl">
                         {/* Logo - Same as header */}
-                        <div className="flex items-center justify-center gap-3 mb-8">
+                        <div className="flex items-center justify-center gap-0 mb-6">
                             <img src={logo} alt="Logo" className="w-16 h-16 object-contain" />
                             <div className="text-left">
                                 <div className="font-bold text-2xl text-gray-800">AI workforce</div>
