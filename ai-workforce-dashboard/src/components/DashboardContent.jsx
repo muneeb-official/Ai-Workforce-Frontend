@@ -6,6 +6,7 @@ import {
   weekMeetings,
   userData,
 } from "../data/mockData";
+import backgroundImage from "../assets/AI Workforce background.png"
 
 // Icon Components for Stats
 const icons = {
@@ -124,7 +125,9 @@ const MeetingCard = ({ meeting }) => (
 
 export default function DashboardContent() {
   return (
-    <div className="px-8 py-6">
+    <div
+    className="px-8 py-6 h-screen flex flex-col overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${backgroundImage})` }}>
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
         Hello {userData.name}, below are your insights
       </h1>
@@ -137,7 +140,7 @@ export default function DashboardContent() {
       </div>
 
       {/* Credits Section */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 mb-8">
+      <div className="bg-white backdrop-blur-sm rounded-3xl p-6 mb-8">
         <div className="flex justify-between items-start mb-5">
           <div>
             <h2 className="text-xl font-semibold text-gray-800">
@@ -152,7 +155,7 @@ export default function DashboardContent() {
             Get More Credits
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-6">
           {creditCards.map((card, idx) => (
             <CreditCard key={idx} {...card} />
           ))}

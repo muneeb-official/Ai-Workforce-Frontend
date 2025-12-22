@@ -3,6 +3,7 @@ import { useState } from "react";
 import { navItems, userData, appInfo } from "../data/mockData";
 import { salesAgentNavItems } from "../data/salesAgentData";
 import logo from "../assets/Logo.png";
+import backgroundImage from "../assets/AI Workforce background.png"
 
 // Main Navigation Icons - Exact match to reference
 const navIcons = {
@@ -283,12 +284,17 @@ export default function Layout({ children, activePage, setActivePage }) {
   const [activeSalesTab, setActiveSalesTab] = useState("b2c");
 
   return (
-    <div className="h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-yellow-100 flex flex-col overflow-hidden">
+    // <div className="h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-yellow-100 flex flex-col overflow-hidden">
+    <div 
+  className="h-screen flex flex-col overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed"
+  style={{ backgroundImage: `url(${backgroundImage})` }}
+>
+    
       {/* Fixed Full-Width Header */}
-      <header className="bg-white flex justify-between items-center px-6 py-3 flex-shrink-0 border-b border-gray-100 z-10">
+      <header className="bg-gradient-to-b from-[#DFE3F5] to-[#DFE3F5] flex justify-between items-center px-6 py-3 flex-shrink-0 border-b border-[#DFE3F5] z-10">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="w-7 h-7 object-contain" />
+          <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
           <div>
             <div className="font-semibold text-sm text-gray-800">
               {appInfo.name}
@@ -299,7 +305,7 @@ export default function Layout({ children, activePage, setActivePage }) {
 
         {/* Right side */}
         <div className="flex items-center gap-4">
-          <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-sm border border-gray-200">
+          <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-sm border border-gray-900">
             <span className="text-sm font-semibold text-gray-600 mr-3">
               {userData.credits} Credits
             </span>
@@ -307,7 +313,7 @@ export default function Layout({ children, activePage, setActivePage }) {
               Buy Credits
             </button>
           </div>
-          <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-all">
+          <button className="bg-white rounded-full p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-all">
             <Icon name="bell" />
           </button>
           <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden">
@@ -321,19 +327,19 @@ export default function Layout({ children, activePage, setActivePage }) {
       </header>
 
       {/* Content Area Below Navbar */}
-      <div className="flex flex-1 overflow-hidden">
+       <div className="flex flex-1 overflow-hidden">
         {/* Fixed Sidebar */}
         <div
-          className="bg-gradient-to-b from-slate-50/80 to-blue-100/80 flex flex-col py-4 px-3 border-r border-gray-100 flex-shrink-0 transition-all duration-300 ease-in-out"
+          className="bg-gradient-to-b from-[#DFE3F5] to-[#DFE3F5] flex flex-col py-4 px-3 border-r border-gray-100 flex-shrink-0 transition-all duration-300 ease-in-out"
           onMouseEnter={() => setSidebarExpanded(true)}
           onMouseLeave={() => setSidebarExpanded(false)}
-          style={{ width: sidebarExpanded ? "260px" : "72px" }}
+          style={{ width: sidebarExpanded ? "280px" : "72px" }}
         >
           {/* Back Button - Only show when in sub-pages like Sales */}
           {activePage === "sales" && (
             <button
               onClick={() => setActivePage("analytics")}
-              className="flex items-center gap-3 px-2 py-1.5 mb-4 transition-all duration-200 ease-in-out w-full group"
+              className="flex items-center px-2 py-1.5 mb-4 transition-all duration-200 ease-in-out w-full group"
             >
               <span className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center bg-white border border-gray-200 text-gray-500 group-hover:border-gray-300 group-hover:bg-gray-50 transition-all duration-200">
                 <svg
@@ -356,7 +362,7 @@ export default function Layout({ children, activePage, setActivePage }) {
           )}
 
           {/* Navigation */}
-          <nav className="flex flex-col gap-2 flex-1">
+          <nav className="flex flex-col gap-1 flex-1">
             {activePage === "sales" ? (
               // Sales Agent Navigation
               <>
@@ -394,10 +400,12 @@ export default function Layout({ children, activePage, setActivePage }) {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 overflow-auto transition-all duration-300 ease-in-out">
-          {children}
-        </div>
+<div className="flex-1 overflow-auto transition-all duration-300 ease-in-out py-4">
+  <div className="bg-white rounded-3xl h-full shadow-sm">
+    {children}
+  </div>
+</div>
       </div>
-    </div>
+      </div>
   );
 }

@@ -2,19 +2,19 @@ import { useState } from "react";
 
 // Chevron Icons
 const ChevronRight = ({ className = "" }) => (
-  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
     <path d="M9 18l6-6-6-6" />
   </svg>
 );
 
 const ChevronDown = ({ className = "" }) => (
-  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
     <path d="M6 9l6 6 6-6" />
   </svg>
 );
 
 const SettingsIcon = ({ className = "" }) => (
-  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
     <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
     <circle cx="12" cy="12" r="3" />
   </svg>
@@ -25,13 +25,13 @@ export const FilterSection = ({ title, children, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   
   return (
-    <div className="border border-gray-200 rounded-lg mb-3 overflow-hidden bg-white">
+    <div className="rounded-lg mb-3 overflow-hidden bg-[#F4F5FB]">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between py-3 px-4 text-left hover:bg-gray-50 transition-all duration-200"
       >
         <span className="font-medium text-gray-800">{title}</span>
-        <span className={`transition-transform duration-200 text-blue-500 ${isOpen ? "rotate-90" : ""}`}>
+        <span className={`transition-transform duration-200 text-blue-500 ${isOpen ? "rotate-90" : "rotate-180"}`}>
           <ChevronRight />
         </span>
       </button>
@@ -47,7 +47,6 @@ export const FilterSection = ({ title, children, defaultOpen = false }) => {
     </div>
   );
 };
-
 // Text Input Filter
 export const TextInput = ({ placeholder, value, onChange }) => (
   <input
@@ -81,10 +80,10 @@ export const ExpandableListItem = ({ item, onToggle, isSelected }) => {
   
   return (
     <div>
-      <div className="flex items-center gap-2 py-1.5 hover:bg-gray-50 rounded-lg px-2 transition-colors duration-150">
+      <div className="flex items-center gap-2 py-1.5 bg-[#F4F5FB]  hover:bg-gray-50 rounded-lg px-2 transition-colors duration-150">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="p-0.5 hover:bg-gray-100 rounded transition-colors duration-150"
+          className="p-0.5 bg-[#F4F5FB] hover:bg-gray-100 rounded transition-colors duration-150"
         >
           <ChevronRight className={`text-gray-400 transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`} />
         </button>
