@@ -65,24 +65,24 @@ export default function SearchFiltersPanel({ searchType = "individual" }) {
   return (
     <div className="w-80 bg-white border-r border-gray-100 flex flex-col h-full">
       {/* Header */}
-      <div className="p-4 border-b border-gray-100">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="font-semibold text-gray-800">Search Filters</h3>
-          <button 
-            onClick={clearFilters}
-            className="text-sm text-gray-500 hover:text-gray-700"
-          >
-            Clear Filter
-          </button>
-        </div>
-      </div>
+<div className="p-4">
+  <div className="flex justify-between items-center">
+    <h3 className="font-semibold text-gray-800">Search Filters</h3>
+    <button 
+      onClick={clearFilters}
+      className="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-200"
+    >
+      Clear Filter
+    </button>
+  </div>
+</div>
 
       {/* Scrollable Filters */}
       <div className="flex-1 overflow-auto px-4">
         {isIndividual ? (
           <>
             {/* Individual Search Filters */}
-            <FilterSection title="Name" defaultOpen={true}>
+            <FilterSection title="Name" >
               <TextInput
                 placeholder="Enter Name..."
                 value={filters.name}
@@ -90,7 +90,7 @@ export default function SearchFiltersPanel({ searchType = "individual" }) {
               />
             </FilterSection>
 
-            <FilterSection title="Location" defaultOpen={true}>
+            <FilterSection title="Location" >
               <TextInput
                 placeholder="Enter Location..."
                 value={filters.location}
@@ -123,7 +123,7 @@ export default function SearchFiltersPanel({ searchType = "individual" }) {
         ) : (
           <>
             {/* Bulk Search Filters */}
-            <FilterSection title="Preffered Contact Method" defaultOpen={true}>
+            <FilterSection title="Preffered Contact Method" >
               <SelectInput
                 options={preferredContactMethods}
                 value={filters.preferredContact}
@@ -150,7 +150,7 @@ export default function SearchFiltersPanel({ searchType = "individual" }) {
             </FilterSection>
 
             <FilterSection title="Occupation">
-              <FilterSection title="Role & Department" defaultOpen={true}>
+              <FilterSection title="Role & Department" >
                 <div className="space-y-3">
                   <div>
                     <label className="text-sm font-medium text-gray-700 mb-1 block">Job Title</label>
@@ -264,11 +264,11 @@ export default function SearchFiltersPanel({ searchType = "individual" }) {
       </div>
 
       {/* Load Past Search Button */}
-      <div className="p-4 border-t border-gray-100">
-        <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-          Load Past Search
-        </button>
-      </div>
+<div className="p-4">
+  <button className="w-full bg-blue-500 text-white py-3 rounded-full font-medium hover:bg-blue-600 transition-all duration-200 shadow-sm">
+    Load Past Search
+  </button>
+</div>
     </div>
   );
 }

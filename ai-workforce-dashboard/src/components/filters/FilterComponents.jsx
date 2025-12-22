@@ -1,24 +1,49 @@
 import { useState } from "react";
-import { ChevronRight, ChevronDown, SettingsIcon } from "../icons/SalesIcons";
 
-// Collapsible Filter Section
+// Chevron Icons
+const ChevronRight = ({ className = "" }) => (
+  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M9 18l6-6-6-6" />
+  </svg>
+);
+
+const ChevronDown = ({ className = "" }) => (
+  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M6 9l6 6 6-6" />
+  </svg>
+);
+
+const SettingsIcon = ({ className = "" }) => (
+  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
+
+// Collapsible Filter Section - Styled like reference
 export const FilterSection = ({ title, children, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   
   return (
-    <div className="border-b border-gray-100">
+    <div className="border border-gray-200 rounded-lg mb-3 overflow-hidden bg-white">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between py-3 px-1 text-left hover:bg-gray-50 transition-colors"
+        className="w-full flex items-center justify-between py-3 px-4 text-left hover:bg-gray-50 transition-all duration-200"
       >
         <span className="font-medium text-gray-800">{title}</span>
-        {isOpen ? (
-          <ChevronDown className="text-gray-400" />
-        ) : (
-          <ChevronRight className="text-gray-400 rotate-0" />
-        )}
+        <span className={`transition-transform duration-200 text-blue-500 ${isOpen ? "rotate-90" : ""}`}>
+          <ChevronRight />
+        </span>
       </button>
-      {isOpen && <div className="pb-4">{children}</div>}
+      <div 
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="px-4 pb-4 pt-1">
+          {children}
+        </div>
+      </div>
     </div>
   );
 };
@@ -30,7 +55,7 @@ export const TextInput = ({ placeholder, value, onChange }) => (
     placeholder={placeholder}
     value={value}
     onChange={(e) => onChange(e.target.value)}
-    className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+    className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-200"
   />
 );
 
@@ -40,7 +65,7 @@ export const SelectInput = ({ options, value, onChange }) => (
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 appearance-none bg-white pr-8"
+      className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 appearance-none bg-white pr-8 transition-all duration-200"
     >
       {options.map((opt, idx) => (
         <option key={idx} value={opt}>{opt}</option>
@@ -56,48 +81,52 @@ export const ExpandableListItem = ({ item, onToggle, isSelected }) => {
   
   return (
     <div>
-      <div className="flex items-center gap-2 py-1.5 hover:bg-gray-50 rounded px-1">
+      <div className="flex items-center gap-2 py-1.5 hover:bg-gray-50 rounded-lg px-2 transition-colors duration-150">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="p-0.5 hover:bg-gray-100 rounded"
+          className="p-0.5 hover:bg-gray-100 rounded transition-colors duration-150"
         >
-          <ChevronRight className={`text-gray-400 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
+          <ChevronRight className={`text-gray-400 transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`} />
         </button>
         <label className="flex items-center gap-2 flex-1 cursor-pointer">
           <input
             type="checkbox"
             checked={isSelected}
             onChange={() => onToggle(item.name)}
-            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 transition-colors duration-150"
           />
           <span className="text-sm text-gray-700">
             {item.name} {item.count && <span className="text-gray-400">({item.count})</span>}
           </span>
         </label>
-        <button className="p-1 hover:bg-gray-100 rounded">
+        <button className="p-1 hover:bg-gray-100 rounded transition-colors duration-150">
           <SettingsIcon className="text-gray-400" />
         </button>
       </div>
-      {isExpanded && item.children && (
-        <div className="ml-8 mt-1 space-y-1">
-          {item.children.map((child, idx) => (
-            <label key={idx} className="flex items-center gap-2 py-1 px-2 hover:bg-gray-50 rounded cursor-pointer">
-              <input
-                type="checkbox"
-                className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
-              <span className="text-sm text-gray-600">{child}</span>
-            </label>
-          ))}
-        </div>
-      )}
+      <div className={`overflow-hidden transition-all duration-200 ease-in-out ${
+        isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+      }`}>
+        {item.children && (
+          <div className="ml-8 mt-1 space-y-1">
+            {item.children.map((child, idx) => (
+              <label key={idx} className="flex items-center gap-2 py-1.5 px-2 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-150">
+                <input
+                  type="checkbox"
+                  className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+                <span className="text-sm text-gray-600">{child}</span>
+              </label>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
 // Simple Checkbox List Item
 export const CheckboxListItem = ({ item, onToggle, isSelected }) => (
-  <div className="flex items-center gap-2 py-1.5 hover:bg-gray-50 rounded px-1">
+  <div className="flex items-center gap-2 py-1.5 hover:bg-gray-50 rounded-lg px-2 transition-colors duration-150">
     <label className="flex items-center gap-2 flex-1 cursor-pointer">
       <input
         type="checkbox"
@@ -107,7 +136,7 @@ export const CheckboxListItem = ({ item, onToggle, isSelected }) => (
       />
       <span className="text-sm text-gray-700">{item.name}</span>
     </label>
-    <button className="p-1 hover:bg-gray-100 rounded">
+    <button className="p-1 hover:bg-gray-100 rounded transition-colors duration-150">
       <SettingsIcon className="text-gray-400" />
     </button>
   </div>
@@ -129,11 +158,11 @@ export const RadiusSlider = ({ value, onChange }) => {
         max="100"
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+        className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer"
       />
       <div className="flex justify-between mt-1">
         {marks.map((mark) => (
-          <span key={mark} className="text-xs text-gray-400">{mark}</span>
+          <span key={mark} className="text-xs text-blue-500 font-medium">{mark}</span>
         ))}
       </div>
     </div>

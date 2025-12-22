@@ -34,29 +34,29 @@
 
 // export default App
 
-import { useState } from "react";
-import Dashboard from "./components/Dashboard";
-import SalesAgent from "./pages/SalesAgent";
+// import { useState } from "react";
+// import Dashboard from "./components/Dashboard";
+// import SalesAgent from "./pages/SalesAgent";
 
 // // Simple routing without react-router for now
-function App() {
-  const [currentPage, setCurrentPage] = useState("dashboard");
+// function App() {
+//   const [currentPage, setCurrentPage] = useState("dashboard");
 
   // You can replace this with React Router later
-  const renderPage = () => {
-    switch (currentPage) {
-      case "sales":
-        return <SalesAgent />;
-      case "dashboard":
-      default:
-        return <Dashboard onNavigate={setCurrentPage} />;
-    }
-  };
+//   const renderPage = () => {
+//     switch (currentPage) {
+//       case "sales":
+//         return <SalesAgent />;
+//       case "dashboard":
+//       default:
+//         return <Dashboard onNavigate={setCurrentPage} />;
+//     }
+//   };
 
-  return renderPage();
-}
+//   return renderPage();
+// }
 
-export default App;
+// export default App;
 
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Dashboard from './components/Dashboard';
@@ -72,3 +72,31 @@ export default App;
 //     </BrowserRouter>
 //   );
 // }
+
+// App.jsx
+import { useState } from "react";
+import Layout from "./components/Layout";
+import DashboardContent from "./components/DashboardContent";
+import SalesAgentContent from "./pages/SalesAgentContent";
+
+function App() {
+  const [activePage, setActivePage] = useState("analytics");
+
+  const renderContent = () => {
+    switch (activePage) {
+      case "sales":
+        return <SalesAgentContent />;
+      case "analytics":
+      default:
+        return <DashboardContent />;
+    }
+  };
+
+  return (
+    <Layout activePage={activePage} setActivePage={setActivePage}>
+      {renderContent()}
+    </Layout>
+  );
+}
+
+export default App;
