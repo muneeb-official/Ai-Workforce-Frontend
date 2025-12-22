@@ -63,7 +63,7 @@ export default function SearchFiltersPanel({ searchType = "individual" }) {
   const isIndividual = searchType === "individual";
 
   return (
-    <div className="w-80 bg-white border-r border-gray-100 flex flex-col h-full">
+    <div className="w-80 bg-white border-r border-gray-100 flex flex-col ">
       {/* Header */}
 <div className="p-4">
   <div className="flex justify-between items-center">

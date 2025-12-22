@@ -28,7 +28,7 @@ export const FilterSection = ({ title, children, defaultOpen = false }) => {
     <div className="rounded-lg mb-3 overflow-hidden bg-[#F4F5FB]">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between py-3 px-4 text-left hover:bg-gray-50 transition-all duration-200"
+        className="w-full flex items-center justify-between py-3 px-4 text-left hover:transition-all duration-200"
       >
         <span className="font-medium text-gray-800">{title}</span>
         <span className={`transition-transform duration-200 text-blue-500 ${isOpen ? "rotate-90" : "rotate-180"}`}>
@@ -80,7 +80,7 @@ export const ExpandableListItem = ({ item, onToggle, isSelected }) => {
   
   return (
     <div>
-      <div className="flex items-center gap-2 py-1.5 bg-[#F4F5FB]  hover:bg-gray-50 rounded-lg px-2 transition-colors duration-150">
+      <div className="flex items-center gap-1 py-1.5 bg-[#F4F5FB]  hover:bg-gray-50 rounded-lg px-2 transition-colors duration-150">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="p-0.5 bg-[#F4F5FB] hover:bg-gray-100 rounded transition-colors duration-150"
